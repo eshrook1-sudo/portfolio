@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shrook Elsayed | Frontend Developer & CS Student</title>
+    <title>Shrook Elsayed | Frontend Developer</title>
     <!-- Google Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <!-- FontAwesome Icons -->
+    <!-- Font Awesome Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -17,552 +17,740 @@
 
     <style>
       :root {
-        --bg-color: #0f172a;
-        --card-bg: #1e293b;
-        --primary: #38bdf8;
-        --secondary: #818cf8;
-        --text-main: #f8fafc;
-        --text-muted: #94a3b8;
-        --border: #334155;
-        --transition: all 0.3s ease;
+        --burgundy: #581845;
+        --pink-primary: #d81b60;
+        --pink-light: #f8bbd0;
+        --beige-warm: #fdfbf7;
+        --beige-card: #f4ece1;
+        --text-dark: #2b2b2b;
+        --white: #ffffff;
       }
 
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        font-family: "Cairo", sans-serif;
         scroll-behavior: smooth;
       }
 
       body {
-        font-family: "Poppins", sans-serif;
-        background-color: var(--bg-color);
-        color: var(--text-main);
-        line-height: 1.7;
+        background-color: var(--beige-warm);
+        color: var(--text-dark);
+        line-height: 1.6;
+        overflow-x: hidden;
       }
 
-      .container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-
-      /* Header / Navbar */
+      /* Header & Navbar */
       header {
-        background: rgba(15, 23, 42, 0.9);
+        background-color: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(88, 24, 69, 0.08);
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         z-index: 1000;
-        border-bottom: 1px solid var(--border);
-        padding: 15px 0;
       }
 
-      nav {
+      .nav-container {
+        max-width: 1100px;
+        margin: 0 auto;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 20px;
       }
 
       .logo {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: var(--primary);
+        font-size: 26px;
+        font-weight: 800;
+        color: var(--burgundy);
+        letter-spacing: 1px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .logo span {
+        color: var(--pink-primary);
+      }
+
+      .logo-heart {
+        font-size: 22px;
+        animation: heartbeat 1.5s infinite;
       }
 
       .nav-links {
         display: flex;
-        gap: 20px;
+        gap: 25px;
         list-style: none;
       }
 
       .nav-links a {
-        color: var(--text-muted);
         text-decoration: none;
-        font-size: 0.9rem;
-        transition: var(--transition);
+        color: var(--text-dark);
+        font-weight: 600;
+        transition: 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: var(--pink-primary);
+        bottom: -5px;
+        left: 0;
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
       }
 
       .nav-links a:hover {
-        color: var(--primary);
+        color: var(--pink-primary);
       }
 
-      /* Hero Section (Cover) */
+      /* Hero Section with Animation & Profile Picture */
       .hero {
         min-height: 100vh;
+        background: linear-gradient(
+          135deg,
+          rgba(248, 187, 208, 0.25) 0%,
+          rgba(244, 236, 225, 0.9) 100%
+        );
         display: flex;
         align-items: center;
         justify-content: center;
-        text-align: center;
-        padding-top: 80px;
-        background: radial-gradient(
-          circle at center,
-          rgba(56, 189, 248, 0.08) 0%,
-          transparent 70%
-        );
+        padding: 100px 20px 50px;
+      }
+
+      .hero-container {
+        max-width: 1100px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 50px;
+        width: 100%;
+        flex-wrap: wrap-reverse;
+      }
+
+      .hero-content {
+        flex: 1;
+        min-width: 300px;
+        animation: slideInLeft 1s ease;
       }
 
       .hero-content h1 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 10px;
-        background: linear-gradient(135deg, var(--text-main), var(--primary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        font-size: 44px;
+        color: var(--burgundy);
+        margin-bottom: 15px;
+        font-weight: 800;
+      }
+
+      .hero-content h1 span {
+        color: var(--pink-primary);
+        text-shadow: 0 2px 10px rgba(216, 27, 96, 0.2);
       }
 
       .hero-content p {
-        font-size: 1.1rem;
-        color: var(--text-muted);
-        margin-bottom: 25px;
+        font-size: 20px;
+        color: #555;
+        margin-bottom: 30px;
+        font-weight: 600;
+      }
+
+      /* Profile Image Container Styling */
+      .hero-img-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        min-width: 280px;
+        animation: zoomIn 1s ease;
+      }
+
+      .profile-frame {
+        position: relative;
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+        padding: 6px;
+        background: linear-gradient(
+          45deg,
+          var(--burgundy),
+          var(--pink-primary)
+        );
+        box-shadow: 0 10px 30px rgba(216, 27, 96, 0.3);
+        animation: floatAnim 4s ease-in-out infinite;
+      }
+
+      .profile-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid var(--white);
       }
 
       .btn {
         display: inline-block;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: #0f172a;
-        padding: 12px 30px;
+        background: linear-gradient(
+          45deg,
+          var(--burgundy),
+          var(--pink-primary)
+        );
+        color: var(--white);
+        padding: 14px 35px;
         border-radius: 30px;
-        font-weight: 600;
         text-decoration: none;
-        transition: var(--transition);
-        box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+        font-weight: bold;
+        box-shadow: 0 5px 20px rgba(216, 27, 96, 0.4);
+        transition: all 0.3s ease;
       }
 
       .btn:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(56, 189, 248, 0.5);
+        transform: translateY(-5px) scale(1.03);
+        box-shadow: 0 8px 25px rgba(216, 27, 96, 0.6);
       }
 
       /* Sections General */
       section {
-        padding: 80px 0;
-        border-bottom: 1px solid var(--border);
+        padding: 90px 20px;
+        max-width: 1100px;
+        margin: 0 auto;
       }
 
       .section-title {
-        font-size: 1.8rem;
-        font-weight: 700;
-        margin-bottom: 40px;
         text-align: center;
+        font-size: 34px;
+        color: var(--burgundy);
+        margin-bottom: 50px;
         position: relative;
+        font-weight: 800;
       }
 
       .section-title::after {
         content: "";
-        display: block;
-        width: 40px;
+        position: absolute;
+        width: 70px;
         height: 4px;
-        background: var(--primary);
-        margin: 10px auto 0;
+        background: linear-gradient(
+          90deg,
+          var(--burgundy),
+          var(--pink-primary)
+        );
+        bottom: -12px;
+        left: 50%;
+        transform: translateX(-50%);
         border-radius: 2px;
       }
 
-      /* About Card */
+      /* About Section */
       .about-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        padding: 30px;
-        border-radius: 16px;
-        font-size: 1rem;
-        color: var(--text-muted);
+        background-color: var(--beige-card);
+        padding: 45px;
+        border-radius: 20px;
+        box-shadow: 0 8px 25px rgba(88, 24, 69, 0.05);
         text-align: center;
-        max-width: 800px;
-        margin: 0 auto;
+        font-size: 19px;
+        color: #444;
+        border: 1px solid rgba(248, 187, 208, 0.5);
+        transition: 0.3s;
       }
 
-      /* Grids */
-      .grid-2 {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 25px;
-      }
-
-      .card {
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        padding: 25px;
-        border-radius: 16px;
-        transition: var(--transition);
-      }
-
-      .card:hover {
-        border-color: var(--primary);
+      .about-card:hover {
         transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(88, 24, 69, 0.1);
       }
 
-      .card h3 {
-        font-size: 1.2rem;
-        margin-bottom: 8px;
-        color: var(--text-main);
+      /* Skills Section */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
       }
 
-      .card span {
-        font-size: 0.85rem;
-        color: var(--primary);
-        display: block;
-        margin-bottom: 12px;
-        font-weight: 600;
-      }
-
-      .card p {
-        color: var(--text-muted);
-        font-size: 0.9rem;
-      }
-
-      /* Skills Badges */
-      .skills-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        justify-content: center;
-      }
-
-      .skill-badge {
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        padding: 10px 20px;
-        border-radius: 25px;
-        font-weight: 600;
-        font-size: 0.9rem;
-        color: var(--primary);
-        transition: var(--transition);
-      }
-
-      .skill-badge:hover {
-        background: var(--primary);
-        color: var(--bg-color);
-        border-color: var(--primary);
-      }
-
-      /* Testimonial */
-      .testimonial-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border);
-        padding: 30px;
-        border-radius: 16px;
+      .skill-item {
+        background: var(--white);
+        padding: 25px;
+        border-radius: 15px;
         text-align: center;
-        max-width: 700px;
-        margin: 0 auto;
-        font-style: italic;
-        color: var(--text-muted);
+        box-shadow: 0 5px 15px rgba(88, 24, 69, 0.05);
+        border: 1px solid rgba(248, 187, 208, 0.4);
+        transition: all 0.3s ease;
       }
 
-      .testimonial-card p {
-        font-size: 1rem;
+      .skill-item i {
+        font-size: 40px;
+        color: var(--pink-primary);
         margin-bottom: 15px;
-        color: var(--text-main);
+        transition: transform 0.3s;
       }
 
-      .testimonial-card span {
-        font-size: 0.85rem;
-        color: var(--primary);
-        font-weight: 600;
-        font-style: normal;
+      .skill-item h3 {
+        color: var(--burgundy);
+        font-size: 18px;
+        font-weight: 700;
       }
 
-      /* Contact */
-      .contact-content {
+      .skill-item:hover {
+        transform: translateY(-8px);
+        background: linear-gradient(135deg, var(--white), var(--pink-light));
+        border-color: var(--pink-primary);
+        box-shadow: 0 10px 25px rgba(216, 27, 96, 0.2);
+      }
+
+      .skill-item:hover i {
+        transform: scale(1.2) rotate(10deg);
+      }
+
+      /* Projects Grid */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+      }
+
+      .project-card {
+        background: var(--white);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 6px 20px rgba(88, 24, 69, 0.06);
+        border: 1px solid rgba(248, 187, 208, 0.4);
+        transition: all 0.4s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 35px rgba(216, 27, 96, 0.15);
+        border-color: var(--pink-primary);
+      }
+
+      .project-img-wrapper {
+        overflow: hidden;
+        width: 100%;
+        height: 210px;
+      }
+
+      .project-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .project-card:hover .project-img {
+        transform: scale(1.1);
+      }
+
+      .project-info {
+        padding: 25px;
+      }
+
+      .project-info h3 {
+        color: var(--burgundy);
+        font-size: 22px;
+        margin-bottom: 10px;
+        font-weight: 700;
+      }
+
+      .project-info p {
+        color: #666;
+        margin-bottom: 20px;
+        font-size: 15px;
+      }
+
+      .project-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background-color: var(--pink-light);
+        color: var(--burgundy);
+        padding: 9px 22px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+
+      .project-link:hover {
+        background-color: var(--pink-primary);
+        color: var(--white);
+        box-shadow: 0 4px 12px rgba(216, 27, 96, 0.3);
+      }
+
+      /* Events Section (Single Image Layout) */
+      .event-container {
+        background: var(--white);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 8px 25px rgba(88, 24, 69, 0.05);
+        border: 1px solid rgba(248, 187, 208, 0.5);
         text-align: center;
+      }
+
+      .event-text {
+        font-size: 18px;
+        color: #555;
+        margin-bottom: 30px;
+        line-height: 1.9;
+      }
+
+      .single-event-img-wrapper {
         max-width: 600px;
         margin: 0 auto;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 8px 20px rgba(88, 24, 69, 0.1);
+        border: 3px solid var(--pink-light);
+        transition: all 0.4s ease;
       }
 
-      .contact-content p {
-        color: var(--text-muted);
-        margin-bottom: 25px;
-        font-size: 0.95rem;
+      .single-event-img-wrapper img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s ease;
       }
 
-      .social-links {
+      .single-event-img-wrapper:hover {
+        border-color: var(--pink-primary);
+        box-shadow: 0 12px 30px rgba(216, 27, 96, 0.25);
+      }
+
+      .single-event-img-wrapper:hover img {
+        transform: scale(1.03);
+      }
+
+      /* Contact Section */
+      .contact-section {
+        background: linear-gradient(135deg, var(--burgundy), #3a102d);
+        color: var(--white);
+        text-align: center;
+        border-radius: 25px 25px 0 0;
+        padding: 70px 20px;
+        margin-top: 50px;
+        box-shadow: 0 -10px 30px rgba(88, 24, 69, 0.1);
+      }
+
+      .contact-section h2 {
+        color: var(--white);
+        margin-bottom: 15px;
+        font-size: 32px;
+      }
+
+      .social-icons {
         display: flex;
         justify-content: center;
         gap: 20px;
-        margin-top: 20px;
+        margin-top: 35px;
       }
 
-      .social-links a {
+      .social-icons a {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 45px;
-        height: 45px;
-        background: var(--card-bg);
-        border: 1px solid var(--border);
+        width: 55px;
+        height: 55px;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: var(--white);
         border-radius: 50%;
-        color: var(--text-main);
-        font-size: 1.1rem;
-        transition: var(--transition);
+        font-size: 24px;
+        transition: all 0.3s ease;
         text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.2);
       }
 
-      .social-links a:hover {
-        background: var(--primary);
-        color: var(--bg-color);
-        border-color: var(--primary);
-        transform: translateY(-3px);
+      .social-icons a:hover {
+        background-color: var(--pink-primary);
+        transform: translateY(-8px) rotate(8deg);
+        box-shadow: 0 10px 20px rgba(216, 27, 96, 0.4);
+        border-color: var(--pink-primary);
       }
 
       footer {
+        background-color: #2b1122;
+        color: #bbb;
         text-align: center;
-        padding: 30px 0;
-        color: var(--text-muted);
-        font-size: 0.85rem;
-        border-top: 1px solid var(--border);
+        padding: 20px;
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      /* Keyframe Animations */
+      @keyframes floatAnim {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-12px);
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes zoomIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes heartbeat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
       }
 
       @media (max-width: 768px) {
-        .hero-content h1 {
-          font-size: 2rem;
-        }
         .nav-links {
           display: none;
+        }
+        .hero-content h1 {
+          font-size: 34px;
+        }
+        .hero-container {
+          text-align: center;
         }
       }
     </style>
   </head>
   <body>
-    <!-- Header / Navbar -->
+    <!-- Header -->
     <header>
-      <div class="container nav">
-        <div class="logo">Shrook Elsayed</div>
+      <div class="nav-container">
+        <div class="logo">
+          Shrook<span>.</span>
+          <span class="logo-heart">💖</span>
+        </div>
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
-          <li><a href="#education">Education</a></li>
           <li><a href="#skills">Skills</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#services">Services</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#events">Events</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
     </header>
 
-    <!-- 1. Cover -->
-    <section class="hero" id="cover">
-      <div class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-container">
         <div class="hero-content">
-          <h1>Shrook Elsayed Abdelhaq</h1>
-          <p>Frontend Developer & Computer Science Student</p>
-          <a href="#contact" class="btn">Get In Touch</a>
+          <h1>Hello, I'm <span>Shrook Elsayed</span></h1>
+          <p>Frontend Developer | Computer Science Student</p>
+          <a href="#projects" class="btn"
+            >Explore My Work <i class="fas fa-arrow-down"></i
+          ></a>
+        </div>
+        <!-- Profile Picture Container -->
+        <div class="hero-img-container">
+          <div class="profile-frame">
+            <img
+              src="./portfolio2.jpeg"
+              alt="Shrook Elsayed"
+              class="profile-img"
+            />
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 2. About -->
+    <!-- About Section -->
     <section id="about">
-      <div class="container">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-card">
-          Hello! I am Shrook, a second-year Computer Science and AI student at
-          Benha University, and a passionate Frontend Developer dedicated to
-          turning ideas and UI designs into interactive, fast, and user-friendly
-          web applications. I believe that clean code and responsive design are
-          the foundation of a great user experience.
-        </div>
+      <h2 class="section-title">About Me</h2>
+      <div class="about-card">
+        <p>
+          Second-year student at the Faculty of Computers and Artificial
+          Intelligence, Benha University. Passionate about Frontend Development,
+          building responsive, interactive web applications with clean code,
+          vibrant styling, and an exceptional user experience.
+        </p>
       </div>
     </section>
 
-    <!-- 3. Education -->
-    <section id="education">
-      <div class="container">
-        <h2 class="section-title">Education</h2>
-        <div class="grid-2">
-          <div class="card">
-            <h3>Bachelor of Computers and AI</h3>
-            <span>Benha University</span>
-            <p>
-              Transitioned to the 2nd academic year with strong academic
-              standing in the 1st year, building a solid foundation in computer
-              science.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Digital Egypt Pioneers Initiative (DEPI)</h3>
-            <span>Frontend Software Development Track</span>
-            <p>
-              Successfully completed technical training courses, practical
-              projects, and professional assessments.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. Skills -->
+    <!-- Skills Section -->
     <section id="skills">
-      <div class="container">
-        <h2 class="section-title">Skills</h2>
-        <div class="skills-container">
-          <div class="skill-badge">HTML5</div>
-          <div class="skill-badge">CSS3</div>
-          <div class="skill-badge">JavaScript (ES6+)</div>
-          <div class="skill-badge">C++</div>
-          <div class="skill-badge">Visual Studio Code</div>
-          <div class="skill-badge">Responsive Design</div>
-          <div class="skill-badge">Git & GitHub</div>
-          <div class="skill-badge">UI/UX Best Practices</div>
+      <h2 class="section-title">My Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <i class="fab fa-html5"></i>
+          <h3>HTML5 & Semantic</h3>
+        </div>
+        <div class="skill-item">
+          <i class="fab fa-css3-alt"></i>
+          <h3>CSS3 & Flex/Grid</h3>
+        </div>
+        <div class="skill-item">
+          <i class="fab fa-js"></i>
+          <h3>JavaScript</h3>
+        </div>
+        <div class="skill-item">
+          <i class="fab fa-bootstrap"></i>
+          <h3>Bootstrap 5</h3>
+        </div>
+        <div class="skill-item">
+          <i class="fas fa-code"></i>
+          <h3>VS Code Editor</h3>
+        </div>
+        <div class="skill-item">
+          <i class="fab fa-git-alt"></i>
+          <h3>Git & GitHub</h3>
         </div>
       </div>
     </section>
 
-    <!-- 5. Work Experience -->
-    <section id="experience">
-      <div class="container">
-        <h2 class="section-title">Work Experience</h2>
-        <div class="grid-2">
-          <div class="card">
-            <h3>Frontend Developer Trainee</h3>
-            <span>Digital Egypt Pioneers Initiative (DEPI)</span>
-            <p>
-              Collaborated within team project (QAL5_SWD2_S1) to design and
-              build responsive web pages adhering to clean code practices in VS
-              Code.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Independent Projects Developer</h3>
-            <span>Academic & Personal Work</span>
-            <p>
-              Developed and styled interactive homepages (Home.html), structured
-              tables, and applied custom UI visual backgrounds.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. Offered Services -->
-    <section id="services">
-      <div class="container">
-        <h2 class="section-title">Offered Services</h2>
-        <div class="grid-2">
-          <div class="card">
-            <h3>Frontend Web Development</h3>
-            <p>
-              Translating UI/UX designs and concepts into fully functional,
-              high-performance, and interactive websites using clean code.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Responsive Web Design</h3>
-            <p>
-              Ensuring flawless compatibility and seamless user experiences
-              across all devices and screen sizes (mobiles, tablets, desktops).
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 7. Projects -->
+    <!-- Projects Section -->
     <section id="projects">
-      <div class="container">
-        <h2 class="section-title">Projects</h2>
-        <div class="grid-2">
-          <div class="card">
-            <h3>Interactive Homepage Project</h3>
-            <span>HTML5, CSS3, VS Code</span>
-            <p>
-              Built a modern homepage featuring structural containers, data
-              tables, embedded video elements (iframe), and visual background
-              overlays.
-            </p>
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <div class="project-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=600&q=80"
+              alt="Luxury Perfumes"
+              class="project-img"
+            />
           </div>
-          <div class="card">
-            <h3>DEPI Technical Program Projects</h3>
-            <span>Frontend Track</span>
+          <div class="project-info">
+            <h3>Luxury Perfumes</h3>
             <p>
-              Executed individual and group coding assignments focusing on
-              responsive layouts and modular code architecture.
+              An elegant and fully responsive e-commerce website designed for
+              browsing and purchasing luxury perfumes with a sophisticated UI.
             </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 8. Achievements -->
-    <section id="achievements">
-      <div class="container">
-        <h2 class="section-title">Achievements</h2>
-        <div class="grid-2">
-          <div class="card">
-            <h3>DEPI Graduation</h3>
-            <span>2026</span>
-            <p>
-              Successfully completed and graduated from the Frontend Software
-              Development track under DEPI.
-            </p>
-          </div>
-          <div class="card">
-            <h3>Academic Excellence</h3>
-            <span>Benha University</span>
-            <p>
-              Successfully advanced to the second year at the Faculty of
-              Computers and AI with distinction.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 9. Testimonials -->
-    <section id="testimonials">
-      <div class="container">
-        <h2 class="section-title">Testimonials</h2>
-        <div class="testimonial-card">
-          <p>
-            "Shrook has demonstrated exceptional commitment and a strong ability
-            to grasp advanced programming concepts, applying them accurately and
-            professionally in frontend development projects during the DEPI
-            training."
-          </p>
-          <span>— Academic & Technical Training Evaluation</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- 10. Call to Action and Contact Information -->
-    <section id="contact">
-      <div class="container">
-        <h2 class="section-title">Contact Information</h2>
-        <div class="contact-content">
-          <p>
-            Have a project in mind or looking to bring your web ideas to life?
-            Let's connect and build something amazing together!
-          </p>
-          <a href="eshrook1@gmail.com" class="btn">Send Email</a>
-          <div class="social-links">
             <a
-              href="https://wa.me/201281673717"
+              href="https://eshrook1-sudo.github.io/Luxury-Perfumes/"
               target="_blank"
-              title="WhatsApp"
-              ><i class="fab fa-whatsapp"></i
+              class="project-link"
+              >Live Demo <i class="fas fa-external-link-alt"></i
             ></a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <div class="project-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=600&q=80"
+              alt="Fashion Portfolio"
+              class="project-img"
+            />
+          </div>
+          <div class="project-info">
+            <h3>Fashion Portfolio</h3>
+            <p>
+              A multi-column responsive portfolio website showcasing modern
+              fashion trends, stylish layouts, and smooth navigation.
+            </p>
             <a
-              href="https://www.linkedin.com/in/shrook-elsayed-3a0007387?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+              href="https://eshrook1-sudo.github.io/Fashion/"
               target="_blank"
-              title="LinkedIn"
-              ><i class="fab fa-linkedin-in"></i
+              class="project-link"
+              >Live Demo <i class="fas fa-external-link-alt"></i
             ></a>
+          </div>
+        </div>
+
+        <!-- Project 3: Food Truck (Updated with actual Food Truck image) -->
+        <div class="project-card">
+          <div class="project-img-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1565123409695-7b5ef63a2efb?auto=format&fit=crop&w=600&q=80"
+              alt="Food Truck Website"
+              class="project-img"
+            />
+          </div>
+          <div class="project-info">
+            <h3>Food Truck Website</h3>
+            <p>
+              A dynamic, eye-catching website for a mobile food truck, featuring
+              appetizing sections and easy ordering layouts.
+            </p>
             <a
-              href="https://github.com/eshrook1-sudo"
+              href="https://eshrook1-sudo.github.io/Food-Truck-Website/"
               target="_blank"
-              title="GitHub"
-              ><i class="fab fa-github"></i
+              class="project-link"
+              >Live Demo <i class="fas fa-external-link-alt"></i
             ></a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Events Section (Single Image) -->
+    <section id="events">
+      <h2 class="section-title">Events & Activities</h2>
+      <div class="event-container">
+        <p class="event-text">
+          An inspiring participation in the <b>"She Can"</b> event (by
+          Entreprenelle):<br />
+          A leading platform supporting and empowering female entrepreneurs and
+          changemakers. This experience broadened my perspective on creativity,
+          leadership, networking, and professional growth within the tech and
+          business community.
+        </p>
+        <div class="single-event-img-wrapper">
+          <!-- <img src="./event1.jpeg" alt="She Can Event - Shrook" /> -->
+          <img src="./event2.jpeg" alt="She Can Event2 - Shrook" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <div id="contact" class="contact-section">
+      <h2>Get In Touch</h2>
+      <p>
+        Feel free to reach out for collaborations, opportunities, or just to say
+        hello!
+      </p>
+      <div class="social-icons">
+        <a
+          href="https://www.linkedin.com/in/shrook-elsayed-3a0007387"
+          target="_blank"
+          title="LinkedIn"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
+        <a
+          href="https://github.com/eshrook1-sudo"
+          target="_blank"
+          title="GitHub"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a href="https://wa.me/201281673717" target="_blank" title="WhatsApp"
+          ><i class="fab fa-whatsapp"></i
+        ></a>
+      </div>
+    </div>
+
     <footer>
-      <div class="container">
-        <p>All Rights Reserved © 2026 - Shrook Elsayed Abdelhaq</p>
-      </div>
+      <p>Designed & Developed with 💖 by Shrook Elsayed © 2026</p>
     </footer>
   </body>
 </html>
